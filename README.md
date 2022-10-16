@@ -5,9 +5,13 @@ I enjoy doing this type of thing, and unless you give me a timebox I could just 
 
 Drag the code down and run it to interact with the components.
 
+### Libraries
+
+**Material Design** was developed by Google in 2014. I've used MUI for building out this UI because I've used it a lot on my last project and find it has a lot of quality sensible components, as well as a bunch of icons.
+
 ## Weather Component
 
-Even though the weather component could be hard coded, it is a bit interactive.
+Even though the weather component could be hard coded, I've made it a bit interactive.
 The source is drawn from seed data, based on the image in the pdf.
 Within the main page you have an opportinity to play god and change the outlook for tomorrow.
 
