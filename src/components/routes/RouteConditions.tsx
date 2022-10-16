@@ -121,6 +121,11 @@ const RouteConditions = (props: RouteConditionsProps) => {
     );
   };
 
+  /**
+   * Created the output row for a Rampp
+   * @param routeData
+   * @returns formated Grid container with display
+   */
   const drawDataBlock = (routeData: RouteData) => {
     return (
       <Grid container key={`rc-${routeData.id}`} className={styles.routeContainer}>

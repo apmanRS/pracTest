@@ -40,7 +40,7 @@ export const seedData = [
   ["Algorithm 2", 0],
   ["Algorithm 3", 0],
   ["Algorithm 4", 0],
-  ["Algorithm 5", 0], // CSS-style declaration
+  ["Algorithm 5", 0],
 ];
 
 export const options = {
@@ -77,16 +77,25 @@ const RampChart = () => {
   const [data, setData] = useState<(string | number)[][]>([]);
   const [lastUpdate, setLastUpdate] = useState(0);
   const [expanded, setExpanded] = useState(true);
+
+  /** used to expand / contract the accordion*/
   const doExpand = () => {
     setExpanded(!expanded);
   };
 
+  /**
+   * On-mount start getting ramp data
+   */
   useEffect(() => {
     getRampAlgorithms((ramps: RampData[]) => {
       if (ramps && ramps.length > 0) setRampData(ramps);
     });
   }, []);
 
+  /**
+   * Watch for changes to the ramp data and update if
+   * enough time has passed
+   */
   useEffect(() => {
     if (rampData && rampData.length > 0) {
       const tsl = new Date().getTime() - lastUpdate;
@@ -105,6 +114,12 @@ const RampChart = () => {
     }
   }, [rampData, lastUpdate]);
 
+  /**
+   * Get the number of ramps using an algorithm
+   * @param filter Alogirthm 1 | Algorithm 2 | etc...
+   * @param rampData
+   * @returns the number of ramps using the filter algorithm
+   */
   const getNumberOfType = (filter: string, rampData: RampData[]) => {
     return rampData.filter((rd) => rd.algorithm === filter).length;
   };
