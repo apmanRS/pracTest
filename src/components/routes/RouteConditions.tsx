@@ -2,7 +2,7 @@ import Grid from "@mui/material/Grid";
 import SouthIcon from "@mui/icons-material/South";
 import { makeStyles } from "@material-ui/styles";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
-import { RouteData } from "../../interfaces/Routes";
+import { getDotColor, RouteData } from "../../interfaces/Routes";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useState } from "react";
 
@@ -10,10 +10,8 @@ type RouteConditionsProps = {
   routeData: RouteData[];
 };
 
-const defaultTitle = "Delayed Routes";
-const noDataMessage = "No information";
-const greenTrigger = 50;
-const yellowTrigger = 30;
+export const defaultTitle = "Delayed Routes";
+export const noDataMessage = "No information";
 const dotSize = 10;
 const defaultBackgroundColor = "#161D27";
 const defaultForegroundColor = "#BEBEBE";
@@ -107,8 +105,7 @@ const RouteConditions = (props: RouteConditionsProps) => {
    */
   const getDot = (dist: number, travelTime: number) => {
     const avSpeed = Math.ceil((dist / travelTime) * 60);
-    console.log(dist, travelTime, avSpeed);
-    const color = avSpeed > greenTrigger ? "green" : avSpeed > yellowTrigger ? "yellow" : "red";
+    const color = getDotColor(avSpeed);
     return (
       <div
         style={{

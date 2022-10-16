@@ -1,3 +1,10 @@
+export const greenTrigger = 50;
+export const yellowTrigger = 30;
+
+export const getDotColor = (avSpeed: number) => {
+  return avSpeed > greenTrigger ? "green" : avSpeed > yellowTrigger ? "yellow" : "red";
+};
+
 export interface RouteData {
   id: number;
   name: string;
