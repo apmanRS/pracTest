@@ -1,9 +1,11 @@
+# Welcome
+
 Thanks for the opportunity to interview for your company.
 I enjoy doing this type of thing, and unless you give me a timebox I could just tinker forever.
 
 Drag the code down and run it to interact with the components.
 
-# Weather Component
+## Weather Component
 
 Even though the weather component could be hard coded, it is a bit interactive.
 The source is drawn from seed data, based on the image in the pdf.
