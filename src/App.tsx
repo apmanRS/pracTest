@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import WeatherOverview from "./components/weather/WeatherOverview";
-import Sidebar from "./Views/Sidebar";
+import Sidebar from "./views/Sidebar";
 import {
   FormControl,
   FormControlLabel,
