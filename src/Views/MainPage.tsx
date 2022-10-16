@@ -132,6 +132,26 @@ const MainPage = (props: MainPageProps) => {
           </p>
         </Paper>
       </Grid>
+      <Grid item xs={12}>
+        <Paper style={{ padding: 15, margin: "25px", marginLeft: 0 }}>
+          <strong>Testing</strong>
+          <p>
+            To be honest, prior to now I had minimal experience with testing front-end development.
+            As a contractor I have found historically companies lack the time or money for
+            documentation and testing.
+          </p>
+          <p>For this prac I put 3 tests together for the Route Conditions Component.</p>
+          <ul>
+            The tests are;
+            <li>Make sure there is Route Data</li>
+            <li>Check that the Component Renders in the Sidebar by looking for it's headerText</li>
+            <li>
+              Check the routes to make sure that the route distance & time don't end up with an
+              average speed greater than the national limit
+            </li>
+          </ul>
+        </Paper>
+      </Grid>
     </Grid>
   );
 };
