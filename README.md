@@ -35,6 +35,7 @@ If my lawn wasn't quite so long, and it wasn't Sunday I probably would have had 
 For this prac I put 3 tests together for the Route Conditions Component.
 
 The tests are;
-Make sure there is Route Data
-Check that the Component Renders in the Sidebar by looking for it's headerText
-Check the routes to make sure that the route distance & time don't end up with an average speed greater than the national limit
+
+1. Make sure there is Route Data
+2. Check that the Component Renders in the Sidebar by looking for it's headerText
+3. Check the routes to make sure that the route distance & time don't end up with an average speed greater than the national limit
