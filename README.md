@@ -8,6 +8,7 @@ Drag the code down and run it to interact with the components.
 ### Libraries
 
 **Material Design** was developed by Google in 2014. I've used MUI for building out this UI because I've used it a lot on my last project and find it has a lot of quality sensible components, as well as a bunch of icons.
+**Google-charts** - react-google-charts was where I landed for the donut chart. I have a few other JS based charts, but due to time constraints I went with a fairly simple setup and implementation.
 
 ## Weather Component
 
