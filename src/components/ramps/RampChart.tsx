@@ -1,7 +1,5 @@
 import { makeStyles } from "@material-ui/styles";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
-import { NONAME } from "dns";
-import { rmSync } from "fs";
 import { useEffect, useState } from "react";
 import Chart from "react-google-charts";
 import getRampAlgorithms from "../../api/Api";
@@ -94,21 +92,21 @@ const RampChart = () => {
       const tsl = new Date().getTime() - lastUpdate;
       const newData = [
         ["Algorithm", "Percentage"],
-        ["Algorithm 1", getPercentage("Algorithm 1", rampData)],
-        ["Algorithm 2", getPercentage("Algorithm 2", rampData)],
-        ["Algorithm 3", getPercentage("Algorithm 3", rampData)],
-        ["Algorithm 4", getPercentage("Algorithm 4", rampData)],
-        ["Algorithm 5", getPercentage("Algorithm 5", rampData)],
+        ["Algorithm 1", getNumberOfType("Algorithm 1", rampData)],
+        ["Algorithm 2", getNumberOfType("Algorithm 2", rampData)],
+        ["Algorithm 3", getNumberOfType("Algorithm 3", rampData)],
+        ["Algorithm 4", getNumberOfType("Algorithm 4", rampData)],
+        ["Algorithm 5", getNumberOfType("Algorithm 5", rampData)],
       ];
       if (tsl > idealUpdateTime) {
         setData(newData);
         setLastUpdate(new Date().getTime());
       }
     }
-  }, [rampData]);
+  }, [rampData, lastUpdate]);
 
-  const getPercentage = (filter: string, rampData: RampData[]) => {
-    return rampData.filter((rd) => rd.algorithm == filter).length;
+  const getNumberOfType = (filter: string, rampData: RampData[]) => {
+    return rampData.filter((rd) => rd.algorithm === filter).length;
   };
 
   return (
@@ -130,13 +128,7 @@ const RampChart = () => {
       </AccordionSummary>
       <AccordionDetails style={{ padding: 0 }}>
         {data && data.length > 0 ? (
-          <Chart
-            chartType="PieChart"
-            width="100%"
-            height="400px"
-            data={data}
-            options={options}
-          />
+          <Chart chartType="PieChart" width="100%" height="400px" data={data} options={options} />
         ) : (
           <div>{noDataMessage}</div>
         )}

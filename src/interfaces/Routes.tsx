@@ -1,6 +1,5 @@
 export interface RouteData {
   id: number;
-  delay: number;
   name: string;
   from: string;
   to: string;
@@ -11,7 +10,6 @@ export interface RouteData {
 export const SampleRoutes: RouteData[] = [
   {
     id: 1,
-    delay: 90,
     name: "Monash Fwy Out",
     from: "Kings Way",
     to: "EastLink",
@@ -20,7 +18,6 @@ export const SampleRoutes: RouteData[] = [
   },
   {
     id: 2,
-    delay: 70,
     name: "Monash Fwy Out",
     from: "Kings Way",
     to: "EastLink",
@@ -29,7 +26,6 @@ export const SampleRoutes: RouteData[] = [
   },
   {
     id: 3,
-    delay: 50,
     name: "Western Ring Rd",
     from: "West Gate Fwy",
     to: "Western Fwy",
@@ -38,7 +34,6 @@ export const SampleRoutes: RouteData[] = [
   },
   {
     id: 4,
-    delay: 45,
     name: "Eastern Fwy",
     from: "Hoddle St",
     to: "Springvale Rd",

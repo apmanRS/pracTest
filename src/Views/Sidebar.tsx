@@ -1,13 +1,9 @@
-import React, { Fragment, useState } from "react";
+import { Fragment } from "react";
 import RampChart from "../components/ramps/RampChart";
 import RouteConditions from "../components/routes/RouteConditions";
 import WeatherOverview from "../components/weather/WeatherOverview";
 import { SampleRoutes } from "../interfaces/Routes";
-import {
-  getTomorrow,
-  LocationWeather,
-  SampleWeatherData,
-} from "../interfaces/Weather";
+import { getTomorrow, SampleWeatherData } from "../interfaces/Weather";
 
 type SidebarProps = {
   tomorrowChanceOfRain?: number;
@@ -40,10 +36,7 @@ const Sidebar = (props: SidebarProps) => {
    */
   const weatherDataForDisplay = SampleWeatherData["14"].map((weather) => {
     let chanceOfRain = weather.chanceOfRain;
-    if (
-      demoWeather &&
-      weather.date.toDateString() == getTomorrow().toDateString()
-    )
+    if (demoWeather && weather.date.toDateString() === getTomorrow().toDateString())
       chanceOfRain = tomorrowTrigger;
     return { ...weather, chanceOfRain };
   });
@@ -66,10 +59,10 @@ const Sidebar = (props: SidebarProps) => {
   const delayOverrides: { [rteId: number]: number } = routeOverrides
     ? { ...routeOverrides }
     : {
-        [1]: 30,
-        [2]: 30,
-        [3]: 90,
-        [4]: 50,
+        1: 30,
+        2: 30,
+        3: 90,
+        4: 50,
       };
 
   /**
@@ -79,12 +72,12 @@ const Sidebar = (props: SidebarProps) => {
   const routeDataForDisplay = SampleRoutes.map((rte) => {
     // if not demo, just use the route delay, otherwise if a delayOverride for
     // this route-id then use that
-    const delayToUse = !demoRoutes
-      ? rte.delay
+    const travelTimeToUse = !demoRoutes
+      ? rte.time
       : delayOverrides[rte.id]
       ? delayOverrides[rte.id]
-      : rte.delay;
-    return { ...rte, delay: delayToUse };
+      : rte.time;
+    return { ...rte, time: travelTimeToUse };
   });
   //#endregion
 

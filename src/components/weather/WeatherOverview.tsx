@@ -74,11 +74,7 @@ const WeatherOverview = (props: WeatherOverviewProps) => {
    */
   const getWeatherIcon = (cor: number | null) => {
     if (!cor) return;
-    return cor > stormTrigger
-      ? stormIcon
-      : cor > cloudTrigger
-      ? cloudIcon
-      : sunIcon;
+    return cor > stormTrigger ? stormIcon : cor > cloudTrigger ? cloudIcon : sunIcon;
   };
 
   /**
@@ -89,8 +85,7 @@ const WeatherOverview = (props: WeatherOverviewProps) => {
   const getTomorrowSummary = (tWeather: WeatherData | null | undefined) => {
     return tWeather ? (
       <div style={{ display: "flex", alignItems: "center" }}>
-        {`${tWeather.temperature.max}`}&deg;{" "}
-        {getWeatherIcon(tWeather.chanceOfRain)}
+        {`${tWeather.temperature.max}`}&deg; {getWeatherIcon(tWeather.chanceOfRain)}
       </div>
     ) : (
       <div>{noWeatherMessage}</div>
@@ -105,15 +100,11 @@ const WeatherOverview = (props: WeatherOverviewProps) => {
       <Grid container style={{ width: "70%" }}>
         <Grid item xs={6} className={styles.label} style={{ display: "block" }}>
           <div>{todayWeather.location_name}</div>
-          <div className={styles.tempLabel}>
-            {todayWeather?.temperature.max}&deg;
-          </div>
-          <div className={styles.timeLabel}>
-            {formatTimeForWeather(new Date())}
-          </div>
+          <div className={styles.tempLabel}>{todayWeather?.temperature.max}&deg;</div>
+          <div className={styles.timeLabel}>{formatTimeForWeather(new Date())}</div>
         </Grid>
         <Grid item xs={6}>
-          <img src={cloudy} />
+          <img src={cloudy} alt="cloudy img from pdf" />
         </Grid>
         <Grid item xs={8} className={styles.label}>
           Humidity

@@ -6,8 +6,7 @@
 export const formatTimeForWeather = (time: Date) => {
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const getTh = (val: number) => {
-    const dThs = ["st", "nd", "rd", "th"];
-    return val > 3 ? "th" : val == 1 ? "st" : val == 2 ? "nd" : "rd";
+    return val > 3 ? "th" : val === 1 ? "st" : val === 2 ? "nd" : "rd";
   };
   const d = new Date(time);
   const day = days[d.getDay()];

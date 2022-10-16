@@ -12,7 +12,7 @@ type RouteConditionsProps = {
 
 const defaultTitle = "Delayed Routes";
 const noDataMessage = "No information";
-const redTrigger = 60;
+const greenTrigger = 50;
 const yellowTrigger = 30;
 const dotSize = 10;
 const defaultBackgroundColor = "#161D27";
@@ -98,9 +98,17 @@ const RouteConditions = (props: RouteConditionsProps) => {
     setExpanded(!expanded);
   };
 
-  const getDot = (val: number) => {
-    const color =
-      val > redTrigger ? "red" : val > yellowTrigger ? "yellow" : "green";
+  /**
+   * Calculates average speed in kph use this to
+   * return a coloured dot
+   * @param dist Distance Travelled in km
+   * @param travelTime Time take in minutes
+   * @returns dot representing average speed
+   */
+  const getDot = (dist: number, travelTime: number) => {
+    const avSpeed = Math.ceil((dist / travelTime) * 60);
+    console.log(dist, travelTime, avSpeed);
+    const color = avSpeed > greenTrigger ? "green" : avSpeed > yellowTrigger ? "yellow" : "red";
     return (
       <div
         style={{
@@ -115,13 +123,9 @@ const RouteConditions = (props: RouteConditionsProps) => {
 
   const drawDataBlock = (routeData: RouteData) => {
     return (
-      <Grid
-        container
-        key={`rc-${routeData.id}`}
-        className={styles.routeContainer}
-      >
+      <Grid container key={`rc-${routeData.id}`} className={styles.routeContainer}>
         <Grid item xs={1} className={styles.dot}>
-          {getDot(routeData.delay)}
+          {getDot(routeData.distance, routeData.time)}
         </Grid>
         <Grid item xs={8} className={styles.nameBlock}>
           {routeData.name}

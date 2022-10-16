@@ -31,7 +31,7 @@ export const getTomorrow = () => {
  * set up some fact data for location 14
  */
 export const SampleWeatherData: LocationWeather = {
-  ["14"]: [
+  "14": [
     {
       location_id: 14,
       location_name: "Melbourne",
